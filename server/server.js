@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const DataCenter = require('./models/schema');
 
 const dbURI = process.env.MONGO_DB_CREDENTIALS;
+const PORT = process.env.PORT || 5000;
 
 (async () => {
 	await mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -31,7 +32,7 @@ const dbURI = process.env.MONGO_DB_CREDENTIALS;
 		res.sendFile(path.join(__dirname, 'build', 'index.html'));
 	});
 
-	app.listen(5000, () => {
+	app.listen(PORT, () => {
 		console.log('server started on port 5000');
 	});
 })();
