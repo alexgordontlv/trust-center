@@ -15,7 +15,8 @@ const PORT = process.env.PORT || 5000;
 	console.log('mongo db connected');
 
 	app.use(cors());
-	app.use(express.static(path.join(__dirname, 'build')));
+	app.use(express.static(path.join(__dirname, '..', 'build')));
+	app.use(express.static('public'));
 
 	app.get('/centers/:centerId', async (req, res) => {
 		const { centerId } = req.params;
@@ -28,8 +29,8 @@ const PORT = process.env.PORT || 5000;
 		return res.status(400).send({ message: 'wrong centerId' });
 	});
 
-	app.get('/*', (req, res) => {
-		res.sendFile(path.join(__dirname, 'build', 'index.html'));
+	app.use((req, res) => {
+		res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
 	});
 
 	app.listen(PORT, () => {
