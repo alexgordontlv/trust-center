@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const conversationSchema = new Schema({
-	userId: String,
-	messages: [{ user: String, content: String }],
+const dataCenterSchema = new Schema({
+	centerId: String,
+	centerName: String,
+	information: [{ informationName: String, infoType: String, data: [Schema.Types.Mixed] }],
 });
 
-const Conversations = mongoose.model('Conversations', conversationSchema);
+const DataCenter = mongoose.model('dataCenter', dataCenterSchema);
 
-module.exports = Conversations;
+module.exports = DataCenter;

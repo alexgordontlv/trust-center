@@ -1,0 +1,12 @@
+.trust_center_header {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.trust_center_body {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}

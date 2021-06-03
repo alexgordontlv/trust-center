@@ -1,32 +1,37 @@
+require('dotenv').config();
 const path = require('path');
+
 const express = require('express');
-const app = express(); // create express app
+const app = express();
 const cors = require('cors');
+const mongoose = require('mongoose');
+const DataCenter = require('./models/schema');
 
-// add middlewares
-app.use(express.static(path.join(__dirname, '..', 'build')));
-app.use(express.static('public'));
-app.use(cors());
+const dbURI = process.env.MONGO_DB_CREDENTIALS;
 
-app.get('/users/:userId', async (req, res) => {
-	console.log(req.params.userId);
-	res.send(`<h1>Hi ${req.params.userId}</h1>`);
-});
-app.get('/centers/:centerId', async (req, res) => {
-	console.log(req.params.centerId, new Date());
-	const { centerId } = req.params;
+(async () => {
+	await mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
+	console.log('mongo db connected');
 
-	if (centerId == 1234) {
-		res.status(200).send({ msg: 'ok' });
-	} else {
-		res.status(400).send({ message: 'wrong centerId' });
-	}
-});
-app.use((req, res, next) => {
-	res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
-});
+	app.use(cors());
+	app.use(express.static(path.join(__dirname, 'build')));
 
-// start express server on port 5000
-app.listen(5000, () => {
-	console.log('server started on port 5000');
-});
+	app.get('/centers/:centerId', async (req, res) => {
+		const { centerId } = req.params;
+		try {
+			const foundDataCenter = await DataCenter.findOne({ centerId });
+			if (foundDataCenter) return res.status(200).send(foundDataCenter);
+		} catch (error) {
+			return res.status(500).send({ message: error });
+		}
+		return res.status(400).send({ message: 'wrong centerId' });
+	});
+
+	app.get('/*', (req, res) => {
+		res.sendFile(path.join(__dirname, 'build', 'index.html'));
+	});
+
+	app.listen(5000, () => {
+		console.log('server started on port 5000');
+	});
+})();

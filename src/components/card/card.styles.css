@@ -1,0 +1,22 @@
+.card {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	transition: 0.3s;
+	background-color: white;
+	margin: 10px;
+	min-height: 200px;
+	border-radius: 5px;
+}
+.card_header {
+	font-weight: 500;
+	font-size: x-large;
+}
+.card_body {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.card:hover {
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
