@@ -5,7 +5,7 @@ import './booleantype.styles.css';
 const BooleanType = ({ data }) => {
 	return (
 		<div className='boolean_type'>
-			<Card key={data._id} width='300px' headline={data.informationName}>
+			<Card key={data._id} width='280px' headline={data.informationName}>
 				{data.data.map((item, idx) => {
 					console.log(item);
 					return (

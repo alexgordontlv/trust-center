@@ -5,7 +5,7 @@ import './certifications.styles.css';
 
 const Certifications = ({ data }) => {
 	return (
-		<Card width='1000px' headline={data.informationName} className='certifications'>
+		<Card width='880px' headline={data.informationName} className='certifications'>
 			{data.data.map((item, idx) => {
 				if (item.status) {
 					return <img key={idx} loading='lazy' alt={item.title} src={certificationStlyes[item.title]} width='100' height='100' />;

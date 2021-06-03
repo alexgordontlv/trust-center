@@ -16,7 +16,7 @@ const TrustCenter = ({ match }) => {
 		},
 		{
 			retry: false,
-			//refetchInterval: 60000,
+			refetchInterval: 60000,
 		}
 	);
 
@@ -25,7 +25,7 @@ const TrustCenter = ({ match }) => {
 	if (error) return <Redirect to='/error' />;
 
 	return (
-		<>
+		<div className='trust_center'>
 			<div className='trust_center_header'>
 				<h1>{data.centerName}</h1>
 			</div>
@@ -34,7 +34,7 @@ const TrustCenter = ({ match }) => {
 					<ComponentFilter key={item._id} data={item} />
 				))}
 			</div>
-		</>
+		</div>
 	);
 };
 

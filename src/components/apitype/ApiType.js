@@ -36,7 +36,7 @@ const ApiType = ({ data }) => {
 	console.log('API', data);
 	return (
 		<div className='api_type'>
-			<Card key={data._id} width='300px' headline={data.informationName}>
+			<Card key={data._id} width='280px' headline={data.informationName}>
 				<div className='container'>
 					{data.data.map((item, idx) => (
 						<FetchApiCompoent key={idx} id={item._id} dataToFetch={item.apiUrl} title={item.title} />
