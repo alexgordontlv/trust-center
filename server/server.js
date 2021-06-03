@@ -18,7 +18,7 @@ const PORT = process.env.PORT || 5000;
 	app.use(express.static(path.join(__dirname, '..', 'build')));
 	app.use(express.static('public'));
 
-	app.get('/server/:centerId', async (req, res) => {
+	app.get('/centers/:centerId', async (req, res) => {
 		const { centerId } = req.params;
 		try {
 			const foundDataCenter = await DataCenter.findOne({ centerId });

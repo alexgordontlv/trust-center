@@ -10,7 +10,7 @@ function App() {
 	return (
 		<Router>
 			<QueryClientProvider client={queryClient}>
-				<Route exact path='/centers/:centerId' component={TrustCenter} />
+				<Route exact path='/:centerId' component={TrustCenter} />
 			</QueryClientProvider>
 			<Route path='/error' component={Error} />
 		</Router>

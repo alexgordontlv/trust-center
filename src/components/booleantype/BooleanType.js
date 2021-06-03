@@ -6,15 +6,12 @@ const BooleanType = ({ data }) => {
 	return (
 		<div className='boolean_type'>
 			<Card key={data._id} width='280px' headline={data.informationName}>
-				{data.data.map((item, idx) => {
-					console.log(item);
-					return (
-						<div className='boolean_container' key={idx}>
-							<p>{`${item.title}`}</p>
-							<p> {item.status ? <GiCheckMark style={{ color: 'green' }} /> : <GiCrossMark style={{ color: 'red' }} />}</p>
-						</div>
-					);
-				})}
+				{data.data.map((item, idx) => (
+					<div className='boolean_container' key={idx}>
+						<p>{`${item.title}`}</p>
+						<p> {item.status ? <GiCheckMark style={{ color: 'green' }} /> : <GiCrossMark style={{ color: 'red' }} />}</p>
+					</div>
+				))}
 			</Card>
 		</div>
 	);

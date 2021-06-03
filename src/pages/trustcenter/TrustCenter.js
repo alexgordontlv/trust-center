@@ -11,7 +11,7 @@ const TrustCenter = ({ match }) => {
 	const { isLoading, error, data } = useQuery(
 		'centerData',
 		async () => {
-			const { data } = await axios.get(`server/${centerId}`);
+			const { data } = await axios.get(`centers/${centerId}`);
 			return data;
 		},
 		{
@@ -19,7 +19,7 @@ const TrustCenter = ({ match }) => {
 			refetchInterval: 60000,
 		}
 	);
-
+	console.log(data);
 	if (isLoading) return 'Loading...';
 
 	if (error) return <Redirect to='/error' />;
