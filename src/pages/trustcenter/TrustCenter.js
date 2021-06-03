@@ -11,7 +11,7 @@ const TrustCenter = ({ match }) => {
 	const { isLoading, error, data } = useQuery(
 		'centerData',
 		async () => {
-			const { data } = await axios.get(`centers/${centerId}`);
+			const { data } = await axios.get(`server/${centerId}`);
 			return data;
 		},
 		{
